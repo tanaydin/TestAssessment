@@ -13,7 +13,7 @@ class Item {
         $this->name = $name;
         $this->completed = $completed;
         $this->db = new Database();
-        $this->createTable();
+        self::ensureTableExists($this->db->getConnection());
     }
 
     public function save() {
@@ -64,19 +64,6 @@ class Item {
         } catch (PDOException $e) {
             error_log("Database error in delete(): " . $e->getMessage());
             return false;
-        }
-    }
-
-    private function createTable() {
-        try {
-            $sql = "CREATE TABLE IF NOT EXISTS items (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                name TEXT NOT NULL,
-                completed BOOLEAN DEFAULT 0
-            )";
-            $this->db->getConnection()->exec($sql);
-        } catch (PDOException $e) {
-            error_log("Database error in createTable(): " . $e->getMessage());
         }
     }
 
