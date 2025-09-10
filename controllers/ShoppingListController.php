@@ -1,6 +1,6 @@
 <?php
 
-require_once 'models/item.php';
+require_once 'models/Item.php';
 require_once 'BaseController.php';
 
 class ShoppingListController extends BaseController {
