@@ -1,15 +1,16 @@
 <?php
 
 require_once 'models/item.php';
+require_once 'BaseController.php';
 
-class ShoppingListController {
+class ShoppingListController extends BaseController {
     
     public function index() {
         // Get all items from the model
         $items = Item::getAll();
         
         // Include the view
-        include 'views/shopping_list.php';
+        $this->view('views/shopping_list.php', ['items' => $items]);
     }
     
     public function addItem($name) {
@@ -19,8 +20,7 @@ class ShoppingListController {
         }
         
         // Redirect back to index to prevent duplicate submissions
-        header('Location: ../index.php');
-        exit;
+        $this->redirect($this->getBaseUrl());
     }
     
     public function toggleItem($id) {
@@ -34,16 +34,14 @@ class ShoppingListController {
         }
         
         // Redirect back to index
-        header('Location: ../index.php');
-        exit;
+        $this->redirect($this->getBaseUrl());
     }
     
     public function deleteItem($id) {
         Item::delete($id);
         
         // Redirect back to index
-        header('Location: ../index.php');
-        exit;
+        $this->redirect($this->getBaseUrl());
     }
     
     public function updateItem($id, $name) {
@@ -59,7 +57,6 @@ class ShoppingListController {
         }
         
         // Redirect back to index
-        header('Location: ../index.php');
-        exit;
+        $this->redirect($this->getBaseUrl());
     }
 }
