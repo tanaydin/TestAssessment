@@ -10,7 +10,7 @@
                     <li style="display: flex;" class="item <?php echo $item->completed ? 'completed' : ''; ?>">
                         <input type="checkbox" <?php echo $item->completed ? 'checked' : ''; ?>>
                         <?php echo htmlspecialchars($item->name); ?>
-                        <button class="delete-item" data-id="<?php echo $item->id; ?>">X</button>
+                        <button class="delete-item" data-id="<?php echo $item->id; ?>" style="margin-left: auto;">X</button>
                     </li>
                 <?php endforeach; ?>
             </ul>
