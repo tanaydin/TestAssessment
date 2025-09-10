@@ -1,6 +1,6 @@
-# RoomRaccoon Assessment - Shopping List Application
+# Assessment - Shopping List Application
 
-This is a PHP-based shopping list application created as an assessment for RoomRaccoon. The application allows users to manage a shopping list with the ability to add, update, toggle completion status, and delete items.
+This is a PHP-based shopping list application created as an assessment. The application allows users to manage a shopping list with the ability to add, update, toggle completion status, and delete items.
 
 ## Features
 
@@ -46,7 +46,7 @@ No manual database setup is required - everything is handled automatically when 
 ## Project Structure
 
 ```
-RoomRaccoonAssessment/
+Assessment/
 ├── assets/
 │   ├── css/
 │   │   └── styles.css          # Application styles
