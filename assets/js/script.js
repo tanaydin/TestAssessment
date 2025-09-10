@@ -1,13 +1,28 @@
 document.addEventListener('DOMContentLoaded', function() {
 
+    function postAction(action, data = {}) {
+        const formData = new FormData();
+        formData.append('action', action);
+        Object.entries(data).forEach(([key, value]) => formData.append(key, value));
+        return fetch('index.php', {
+            method: 'POST',
+            body: formData
+        }).then(() => {
+            location.reload();
+        });
+    }
+
+    function getItemIdFromElement(element) {
+        return element?.dataset?.id || element?.closest('.item')?.querySelector('.delete-item')?.dataset?.id;
+    }
+
     function addItem() {
         const input = document.getElementById('newItem');
         const itemName = input.value.trim();
         
         if (itemName) {
-            // In a real application, this would make an AJAX request
-            // For now, we'll just show an alert
-            alert('Item "' + itemName + '" would be added to the list!');
+            postAction('add', { name: itemName });
+            
             input.value = '';
         }
     }
@@ -20,17 +35,22 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function deleteItem(id) {
-        fetch(`/delete/${id}`, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
+        postAction('delete', { id });
     }
 
     document.querySelectorAll('.delete-item').forEach(button => {
         button.addEventListener('click', function() {
             deleteItem(this.dataset.id);
+        });
+    });
+
+    // Handle checkbox toggle
+    document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            const id = getItemIdFromElement(this);
+            if (id) {
+                postAction('toggle', { id });
+            }
         });
     });
 
