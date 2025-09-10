@@ -9,7 +9,7 @@
                 <?php foreach ($items as $item): ?>
                     <li style="display: flex;" class="item">
                         <input type="checkbox" <?php echo $item->completed ? 'checked' : ''; ?>>
-                        <span class="item-name <?php echo $item->completed ? 'completed' : ''; ?>"><?php echo htmlspecialchars($item->name); ?></span>
+                        <span class="item-name <?php echo $item->completed ? 'completed' : ''; ?>" data-id="<?php echo $item->id; ?>" data-name="<?php echo htmlspecialchars($item->name); ?>"><?php echo htmlspecialchars($item->name); ?></span>
                         <button class="delete-item" data-id="<?php echo $item->id; ?>" >X</button>
                     </li>
                 <?php endforeach; ?>

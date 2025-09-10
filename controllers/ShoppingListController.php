@@ -45,4 +45,21 @@ class ShoppingListController {
         header('Location: ../index.php');
         exit;
     }
+    
+    public function updateItem($id, $name) {
+        if (!empty(trim($name))) {
+            $items = Item::getAll();
+            foreach ($items as $item) {
+                if ($item->id == $id) {
+                    $item->name = trim($name);
+                    $item->save();
+                    break;
+                }
+            }
+        }
+        
+        // Redirect back to index
+        header('Location: ../index.php');
+        exit;
+    }
 }

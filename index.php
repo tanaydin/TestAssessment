@@ -16,6 +16,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             case 'delete':
                 $controller->deleteItem($_POST['id'] ?? '');
                 break;
+            case 'update':
+                $controller->updateItem($_POST['id'] ?? '', $_POST['name'] ?? '');
+                break;
         }
     }
 } else {

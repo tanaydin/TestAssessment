@@ -33,6 +33,30 @@ h1 {
     text-decoration: line-through;
     color: #888;
 }
+.item-name {
+    cursor: pointer;
+    flex: 1;
+    padding: 5px;
+    border-radius: 3px;
+    transition: background-color 0.2s;
+}
+.item-name:hover {
+    background-color: #f0f0f0;
+}
+.item-name.editing {
+    background-color: #fff;
+    border: 1px solid #007bff;
+    padding: 5px;
+}
+.item-name input {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: inherit;
+    font-family: inherit;
+    width: 100%;
+    color: inherit;
+}
 .add-item {
     margin-top: 20px;
     display: flex;
