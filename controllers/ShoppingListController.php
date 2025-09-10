@@ -2,6 +2,7 @@
 
 require_once 'models/Item.php';
 require_once 'BaseController.php';
+require_once 'views/BaseView.php';
 
 class ShoppingListController extends BaseController {
     
@@ -9,8 +10,12 @@ class ShoppingListController extends BaseController {
         // Get all items from the model
         $items = Item::getAll();
         
-        // Include the view
-        $this->view('views/shopping_list.php', ['items' => $items]);
+        // Create BaseView instance and set page title
+        $baseView = new BaseView(['items' => $items]);
+        $baseView->setPageTitle('Shopping List');
+        
+        // Render the view with layout
+        $baseView->renderWithLayout('views/shopping_list.php');
     }
     
     public function addItem($name) {

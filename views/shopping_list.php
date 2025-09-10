@@ -1,6 +1,4 @@
-<?php include 'layouts/header.php'; ?>
-        
-        <?php if (empty($items)): ?>
+<?php if (empty($items)): ?>
             <div class="empty-state">
                 Your shopping list is empty. Add some items below!
             </div>
@@ -20,5 +18,3 @@
             <input type="text" placeholder="Add new item..." id="newItem">
             <button id="addItem">Add Item</button>
         </div>
-
-<?php include 'layouts/footer.php'; ?>

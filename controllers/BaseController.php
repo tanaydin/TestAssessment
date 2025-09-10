@@ -1,5 +1,7 @@
 <?php
 
+require_once 'views/BaseView.php';
+
 class BaseController {
     
     /**
@@ -13,17 +15,14 @@ class BaseController {
     }
     
     /**
-     * Include a view file
+     * Include a view file using BaseView
      * 
      * @param string $view The view file to include
      * @param array $data Optional data to pass to the view
      */
     protected function view($view, $data = []) {
-        // Extract data array to variables for the view
-        extract($data);
-        
-        // Include the view file
-        include $view;
+        $baseView = new BaseView($data);
+        $baseView->renderWithLayout($view);
     }
     
     /**
