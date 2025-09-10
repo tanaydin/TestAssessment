@@ -7,10 +7,10 @@
         <?php else: ?>
             <ul style="list-style: none; padding: 0;">
                 <?php foreach ($items as $item): ?>
-                    <li style="display: flex;" class="item <?php echo $item->completed ? 'completed' : ''; ?>">
+                    <li style="display: flex;" class="item">
                         <input type="checkbox" <?php echo $item->completed ? 'checked' : ''; ?>>
-                        <?php echo htmlspecialchars($item->name); ?>
-                        <button class="delete-item" data-id="<?php echo $item->id; ?>" style="margin-left: auto;">X</button>
+                        <span class="item-name <?php echo $item->completed ? 'completed' : ''; ?>"><?php echo htmlspecialchars($item->name); ?></span>
+                        <button class="delete-item" data-id="<?php echo $item->id; ?>" >X</button>
                     </li>
                 <?php endforeach; ?>
             </ul>
