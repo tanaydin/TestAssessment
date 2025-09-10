@@ -43,6 +43,34 @@ The application will automatically:
 
 No manual database setup is required - everything is handled automatically when you first run the application.
 
+## Project Structure
+
+```
+RoomRaccoonAssessment/
+├── assets/
+│   ├── css/
+│   │   └── styles.css          # Application styles
+│   └── js/
+│       └── script.js           # Frontend JavaScript functionality
+├── controllers/
+│   ├── BaseController.php      # Base controller class
+│   └── ShoppingListController.php  # Shopping list controller
+├── core/                       # Core application files
+├── models/
+│   ├── BaseModel.php           # Base model class
+│   ├── database.php            # Database connection and setup
+│   └── Item.php                # Item model
+├── views/
+│   ├── BaseView.php            # Base view class
+│   ├── layouts/
+│   │   ├── footer.php          # Footer layout
+│   │   └── header.php          # Header layout
+│   └── shopping_list.php       # Shopping list view
+├── index.php                   # Application entry point
+├── shopping_list.db            # SQLite database file
+└── README.md                   # Project documentation
+```
+
 ## Usage
 
 Once the server is running, you can:
